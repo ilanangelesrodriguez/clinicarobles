@@ -5,3 +5,4 @@ sqlparse==0.4.4
 whitenoise==6.4.0
 djangorestframework
 psycopg2-binary
+numpy
