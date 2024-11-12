@@ -3,7 +3,7 @@ document.getElementById('paste-button').onclick = async function() {
     try {
         // Obtiene el texto del portapapeles
         const clipboardText = await navigator.clipboard.readText();
-
+        
         // Divide el texto en valores usando comas, espacios o saltos de línea como separadores
         const values = clipboardText.split(/[\s,]+/).filter(Boolean);
 
