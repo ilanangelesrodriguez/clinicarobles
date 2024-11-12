@@ -96,6 +96,10 @@ CSRF_TRUSTED_ORIGINS = [
     'https://clinica-robles-sistema-deteccion.vercel.app',
     'https://gross-barbabra-ilan-bc39a3dd.koyeb.app',
 ]
+ALLOWED_HOSTS = [
+    'gross-barbabra-ilan-bc39a3dd.koyeb.app', 
+    ]
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
