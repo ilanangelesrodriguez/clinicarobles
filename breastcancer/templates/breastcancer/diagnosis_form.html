@@ -1,0 +1,32 @@
+<!-- diagnosis_form.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Diagnóstico de Cáncer de Mama</title>
+    {% load static %}
+</head>
+<body>
+    <h2>Introduzca los valores para obtener un diagnóstico</h2>
+    <button type="button" id="paste-button">Pegar desde portapapeles</button>
+    <form id="diagnosis-form">
+        {% for column in column_names %}
+        <label for="feature{{ forloop.counter }}">{{ column }}:</label>
+        <input type="text" name="data[]" id="feature{{ forloop.counter }}" required><br>
+        {% endfor %}
+        <button type="submit">Obtener Diagnóstico</button>
+    </form>
+
+    <h3 id="result"></h3>
+
+    <!-- Define las variables de JavaScript antes de cargar el archivo JS -->
+    <script>
+        const diagnosisUrl = "{% url 'diagnosis' %}";
+        const csrfToken = "{{ csrf_token }}";
+    </script>
+
+    <!-- Cargar el archivo JavaScript externo -->
+    <script src="{% static 'js/paste.js' %}"></script>
+    <script src="{% static 'js/diagnosis.js' %}"></script>
+</body>
+</html>
