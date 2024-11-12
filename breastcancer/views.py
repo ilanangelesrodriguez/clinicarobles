@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
 from .serializers import ExamenSerializer, PrediccionSerializer
 from .models import Examen, Prediccion
 import numpy as np
@@ -28,6 +29,7 @@ def predict_diagnosis(data):
     prediction = model.predict(data_scaled)
     return 'Maligno' if prediction[0] == 1 else 'Benigno'
 
+@csrf_exempt
 @api_view(['POST'])
 def diagnosis_view(request):
     if request.method == "POST":

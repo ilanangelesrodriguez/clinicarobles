@@ -9,3 +9,4 @@ numpy
 pandas
 joblib
 scikit-learn
+django-cors-headers

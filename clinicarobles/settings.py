@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'breastcancer',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -95,11 +97,22 @@ CSRF_TRUSTED_ORIGINS = [
     'https://literate-space-rotary-phone-5pvr5xv749ghpgvx-8000.app.github.dev/',
     'https://clinica-robles-sistema-deteccion.vercel.app',
     'https://gross-barbabra-ilan-bc39a3dd.koyeb.app',
+    'https://animated-space-pancake-67v5w4vx97pc5j49-5173.app.github.dev',
+    'https://animated-space-pancake-67v5w4vx97pc5j49-5173.app.github.dev/predecir',
 ]
 ALLOWED_HOSTS = [
-    'gross-barbabra-ilan-bc39a3dd.koyeb.app', 
+    'gross-barbabra-ilan-bc39a3dd.koyeb.app',
+    'https://animated-space-pancake-67v5w4vx97pc5j49-5173.app.github.dev/predecir',
+    'localhost',
+    'literate-space-rotary-phone-5pvr5xv749ghpgvx-8000.app.github.dev',
     ]
-
+CORS_ALLOWED_ORIGINS = [
+    'https://localhost:8000',
+    'https://literate-space-rotary-phone-5pvr5xv749ghpgvx-8000.app.github.dev',
+    'https://clinica-robles-sistema-deteccion.vercel.app',
+    'https://gross-barbabra-ilan-bc39a3dd.koyeb.app',
+    'https://animated-space-pancake-67v5w4vx97pc5j49-5173.app.github.dev',
+]
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
