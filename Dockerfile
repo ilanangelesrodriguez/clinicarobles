@@ -23,4 +23,4 @@ COPY clinicarobles clinicarobles
 
 EXPOSE ${PORT}
 
-CMD gunicorn --bind :${PORT} --workers 2 clinicarobles.wsgi
+CMD gunicorn --bind :${PORT} --workers 4 clinicarobles.wsgi
