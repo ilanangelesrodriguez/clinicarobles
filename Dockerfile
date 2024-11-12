@@ -18,9 +18,15 @@ ENV PORT=8000
 
 WORKDIR /app
 
-COPY --from=builder /app/venv venv
-COPY clinicarobles clinicarobles
+COPY --from=builder /app /app
+
+# Copia el script de entrada
+COPY entrypoint.sh /entrypoint.sh
+
+# Haz que el script de entrada sea ejecutable
+RUN chmod +x /entrypoint.sh
 
 EXPOSE ${PORT}
 
-CMD gunicorn --bind :${PORT} --workers 4 clinicarobles.wsgi
+# Usa el script de entrada
+ENTRYPOINT ["/entrypoint.sh"]
