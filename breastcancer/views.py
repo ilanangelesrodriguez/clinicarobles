@@ -1,5 +1,8 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
+from .serializers import ExamenSerializer, PrediccionSerializer
+from .models import Examen, Prediccion
 import numpy as np
 import pandas as pd
 from joblib import load
@@ -26,11 +29,11 @@ def predict_diagnosis(data):
     prediction = model.predict(data_scaled)
     return 'Maligno' if prediction[0] == 1 else 'Benigno'
 
+@csrf_exempt
+@api_view(['POST'])
 def diagnosis_view(request):
     if request.method == "POST":
-        data = request.POST.getlist('data[]')
+        data = request.data.get('data', [])
         data = [float(i) for i in data]
         diagnosis = predict_diagnosis(data)
-        return JsonResponse({"diagnosis": diagnosis})
-    context = {'column_names': COLUMN_NAMES}
-    return render(request, "breastcancer/diagnosis_form.html", context)
+        return Response({"diagnosis": diagnosis})
