@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<section class="dashboard">
+    <div class="container">
+        <h1>Dashboard</h1>
+        <div class="dashboard-stats">
+            <div class="stat">
+                <h2>Total de Pacientes</h2>
+                <p>{{ total_pacientes }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from .serializers import ExamenSerializer, PrediccionSerializer
-from .models import Examen, Prediccion
+from .models import Examen, Paciente, Prediccion
 import numpy as np
 import pandas as pd
 from joblib import load
@@ -41,4 +41,13 @@ def diagnosis_view(request):
     return render(request, "breastcancer/diagnosis_form.html", context)
 
 def home(request):
-    return render(request, 'index.html')    
+    return render(request, 'index.html')
+
+def dashboard_view(request):
+    # Aquí puedes agregar lógica para obtener datos necesarios para el dashboard
+    context = {
+        'total_pacientes': Paciente.objects.count(),
+        # Agrega más datos al contexto según sea necesario
+    }
+    return render(request, 'breastcancer/dashboard.html', context)
+  
