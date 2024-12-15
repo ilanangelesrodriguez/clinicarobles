@@ -1,5 +1,10 @@
-from django.shortcuts import render
 from django.http import JsonResponse
+from django.shortcuts import render
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
+from .serializers import ExamenSerializer, PrediccionSerializer
+from .models import Examen, Prediccion
 import numpy as np
 import pandas as pd
 from joblib import load
