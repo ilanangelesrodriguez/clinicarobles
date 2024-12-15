@@ -77,19 +77,22 @@ WSGI_APPLICATION = 'clinicarobles.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
-        'NAME': 'ClinicaRobles',
-        'USER': 'sa',
-        'PASSWORD': '1234',
-        'HOST': 'LAPTOP-IB97PH3Q',
-        'PORT': '1433',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'clinicarobles',
+        'USER': 'clinicarobles_owner',
+        'PASSWORD': '50CbIlLQvSNB',
+        'HOST': 'ep-super-bar-a5pdt0zt.us-east-2.aws.neon.tech',
+        'PORT': '5432',
         'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-            'Encrypt': 'No',
-            'TrustServerCertificate': 'Yes',
-        }
+            'sslmode': 'require',
+        },
     }
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000',
+    'https://localhost:8000',
+]
 
 
 # Password validation

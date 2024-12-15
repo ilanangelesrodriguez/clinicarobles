@@ -34,3 +34,6 @@ def diagnosis_view(request):
         return JsonResponse({"diagnosis": diagnosis})
     context = {'column_names': COLUMN_NAMES}
     return render(request, "breastcancer/diagnosis_form.html", context)
+
+def home(request):
+    return render(request, 'index.html')    

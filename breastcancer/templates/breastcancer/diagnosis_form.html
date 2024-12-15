@@ -1,32 +1,40 @@
 <!-- diagnosis_form.html -->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Diagnóstico de Cáncer de Mama</title>
-    {% load static %}
-</head>
+{% extends 'base.html' %}
+
+{% block title %}Diagnóstico de Cáncer de Mama{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <body>
-    <h2>Introduzca los valores para obtener un diagnóstico</h2>
-    <button type="button" id="paste-button">Pegar desde portapapeles</button>
-    <form id="diagnosis-form">
-        {% for column in column_names %}
-        <label for="feature{{ forloop.counter }}">{{ column }}:</label>
-        <input type="text" name="data[]" id="feature{{ forloop.counter }}" required><br>
-        {% endfor %}
-        <button type="submit">Obtener Diagnóstico</button>
-    </form>
+    <div class="diagnosis-container">
+        <h1>Diagnóstico de Cáncer de Mama</h1>
+        <h2>Introduzca los valores para obtener un diagnóstico</h2>
+        <button type="button" id="paste-button" class="diagnosis-btn diagnosis-btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+            Pegar desde portapapeles
+        </button>
+        <form id="diagnosis-form">
+            <div class="diagnosis-form-grid">
+                {% for column in column_names %}
+                <div class="diagnosis-form-group">
+                    <label for="feature{{ forloop.counter }}">{{ column }}:</label>
+                    <input type="text" name="data[]" id="feature{{ forloop.counter }}" required>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="diagnosis-btn diagnosis-btn-primary">Obtener Diagnóstico</button>
+        </form>
+    
+        <div id="result" class="diagnosis-result"></div>
+    </div>
 
-    <h3 id="result"></h3>
-
-    <!-- Define las variables de JavaScript antes de cargar el archivo JS -->
     <script>
         const diagnosisUrl = "{% url 'diagnosis' %}";
         const csrfToken = "{{ csrf_token }}";
     </script>
 
-    <!-- Cargar el archivo JavaScript externo -->
     <script src="{% static 'js/paste.js' %}"></script>
     <script src="{% static 'js/diagnosis.js' %}"></script>
 </body>
-</html>
+{% endblock %}
