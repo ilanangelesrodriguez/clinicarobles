@@ -13,7 +13,61 @@
                 <h2>Total de Pacientes</h2>
                 <p>{{ total_pacientes }}</p>
             </div>
+            <div class="stat">
+                <h2>Total de Exámenes</h2>
+                <p>{{ total_examenes }}</p>
+            </div>
+            <div class="stat">
+                <h2>Total de Predicciones</h2>
+                <p>{{ total_predicciones }}</p>
+            </div>
+            <div class="stat">
+                <h2>Predicciones Benignas</h2>
+                <p>{{ benigno_count }}</p>
+            </div>
+            <div class="stat">
+                <h2>Predicciones Malignas</h2>
+                <p>{{ maligno_count }}</p>
+            </div>
+        </div>
+        <div class="dashboard-charts">
+            <h2>Distribución de Predicciones</h2>
+            <canvas id="predictionsChart"></canvas>
         </div>
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('predictionsChart').getContext('2d');
+    var predictionsChart = new Chart(ctx, {
+        type: 'bar', // Puedes cambiar el tipo de gráfico a 'line', 'pie', etc.
+        data: {
+            labels: ['Benigno', 'Maligno'], // Etiquetas para el eje X
+            datasets: [{
+                label: 'Predicciones',
+                data: [12, 19, 3], // Datos para el gráfico
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+</script>
 {% endblock %}

@@ -44,10 +44,24 @@ def home(request):
     return render(request, 'index.html')
 
 def dashboard_view(request):
-    # Aquí puedes agregar lógica para obtener datos necesarios para el dashboard
+    total_pacientes = Paciente.objects.count()
+    total_examenes = Examen.objects.count()
+    total_predicciones = Prediccion.objects.count()
+    benigno_count = Prediccion.objects.filter(prediction='B').count()
+    maligno_count = Prediccion.objects.filter(prediction='M').count()
+
+    # Datos ficticios adicionales
+    pacientes_por_mes = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
+    examenes_por_mes = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36]
+
     context = {
-        'total_pacientes': Paciente.objects.count(),
-        # Agrega más datos al contexto según sea necesario
+        'total_pacientes': total_pacientes,
+        'total_examenes': total_examenes,
+        'total_predicciones': total_predicciones,
+        'benigno_count': benigno_count,
+        'maligno_count': maligno_count,
+        'pacientes_por_mes': pacientes_por_mes,
+        'examenes_por_mes': examenes_por_mes,
     }
     return render(request, 'breastcancer/dashboard.html', context)
   
