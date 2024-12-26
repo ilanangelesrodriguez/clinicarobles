@@ -39,23 +39,23 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+    var benignoCount = "{{ benigno_count }}";
+    var malignoCount = "{{ maligno_count }}";
     var ctx = document.getElementById('predictionsChart').getContext('2d');
     var predictionsChart = new Chart(ctx, {
-        type: 'bar', // Puedes cambiar el tipo de gráfico a 'line', 'pie', etc.
+        type: 'pie', // Puedes cambiar el tipo de gráfico a 'line', 'pie', etc.
         data: {
             labels: ['Benigno', 'Maligno'], // Etiquetas para el eje X
             datasets: [{
                 label: 'Predicciones',
-                data: [2, 2, 3], // Datos para el gráfico
+                data: [benignoCount, malignoCount], // Datos para el gráfico
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(75, 192, 192, 0.2)'
+                    'rgba(54, 162, 235, 0.2)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(75, 192, 192, 1)'
+                    'rgba(54, 162, 235, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -68,6 +68,5 @@
             }
         }
     });
-</script>
 </script>
 {% endblock %}
