@@ -10,24 +10,24 @@
         <h1>Dashboard</h1>
         <div class="dashboard-stats">
             <div class="stat">
-                <h2>Total de Pacientes</h2>
-                <p>{{ total_pacientes }}</p>
+            <h2>Total de Pacientes</h2>
+            <p style="font-weight: bold; color:black;">{{ total_pacientes }}</p>
             </div>
             <div class="stat">
-                <h2>Total de Exámenes</h2>
-                <p>{{ total_examenes }}</p>
+            <h2>Total de Exámenes</h2>
+            <p style="font-weight: bold; color:black;">{{ total_examenes }}</p>
             </div>
             <div class="stat">
-                <h2>Total de Predicciones</h2>
-                <p>{{ total_predicciones }}</p>
+            <h2>Total de Predicciones</h2>
+            <p style="font-weight: bold; color:black;">{{ total_predicciones }}</p>
             </div>
             <div class="stat">
-                <h2>Predicciones Benignas</h2>
-                <p>{{ benigno_count }}</p>
+            <h2>Predicciones Benignas</h2>
+            <p style="font-weight: bold; color:black;">{{ benigno_count }}</p>
             </div>
             <div class="stat">
-                <h2>Predicciones Malignas</h2>
-                <p>{{ maligno_count }}</p>
+            <h2>Predicciones Malignas</h2>
+            <p style="font-weight: bold; color:black;">{{ maligno_count }}</p>
             </div>
         </div>
         <div class="dashboard-charts">
@@ -46,7 +46,7 @@
             labels: ['Benigno', 'Maligno'], // Etiquetas para el eje X
             datasets: [{
                 label: 'Predicciones',
-                data: [12, 19, 3], // Datos para el gráfico
+                data: [2, 2, 3], // Datos para el gráfico
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
